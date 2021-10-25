@@ -1,6 +1,5 @@
 import React from "react";
 import logo from "../../assets/img/pizza-logo.svg";
-import cart from "../../redux/reducers/cart";
 
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";

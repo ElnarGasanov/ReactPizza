@@ -4,6 +4,7 @@ const initialState = {
         order: "desc",
     },
     category: null,
+    rating: null,
 }
 
 const filters = (state = initialState, action) => {
@@ -17,6 +18,12 @@ const filters = (state = initialState, action) => {
         return{
             ...state,
             category: action.payload
+        }
+    }
+    if(action.type === "SET_RATING"){
+        return{
+            ...state,
+            rating: action.payload
         }
     }
     return state;

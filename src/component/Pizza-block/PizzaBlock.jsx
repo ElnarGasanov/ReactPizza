@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import {PropTypes} from "prop-types";
 
-const PizzaBlock = ({id, imageUrl, name, price, types, sizes, onClickAddPizza}) => {
+const PizzaBlock = ({id, imageUrl, name, price, types, sizes, onClickAddPizza, addedCountPizzas}) => {
     const availableTypes = ["тонкое", "традиционное"];
     const availableSizes = [26, 30, 40,]
 
@@ -70,7 +70,7 @@ const PizzaBlock = ({id, imageUrl, name, price, types, sizes, onClickAddPizza}) 
                         />
                     </svg>
                     <span>Добавить</span>
-                    <i>2</i>
+                    {addedCountPizzas && <i>{addedCountPizzas}</i>}
                 </button>
             </div>
         </div>
@@ -83,7 +83,7 @@ PizzaBlock.propTypes = {
     price: PropTypes.number.isRequired,
     types: PropTypes.arrayOf(PropTypes.number).isRequired,//говорю что в types должен быть массив чисел
     sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
-    onClickAddPizza: PizzaBlock.func,
+    addedCountPizzas: PropTypes.number,
 }
 
 PizzaBlock.defaultProps = {

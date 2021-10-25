@@ -40,7 +40,6 @@ const Sort = React.memo(({ items, activeSortType, onClickSortType }) => {
     //setVisiblePopup(false)
     React.useEffect(() => {
         document.body.addEventListener("click", handleOutsideClick)
-        console.log(sortRef.current)
     }, [])
 
     return(

@@ -5,9 +5,10 @@ export const setLoaded = payload => ({
     payload
 })
 
+// тут запрос через прокси на 3000 сервер(см. в package.json)
 export const fetchPizzas = (category, sortBy) => (dispatch) => {
     dispatch(setLoaded(false))
-    axios.get(`http://localhost:3001/pizzas/?${
+    axios.get(`/pizzas/?${
         category !== null ? `category=${category}` : ""}&_sort=${sortBy.type}&_order=${sortBy.order}`)
         .then(({data}) => {
             dispatch(setPizzas(data));
