@@ -2,10 +2,9 @@ const initialState = {
     items: {},
     totalPrice: 0,
     totalCount: 0,
-}
-// в reducer создай функцию getTotalPrice, возьми массив который я передам и возвращай мне итоговое значение
-const getTotalPrice = arr => arr.reduce((sum, obj) => obj.price + sum, 0)
+};
 
+const getTotalPrice = (arr) => arr.reduce((sum, obj) => obj.price + sum, 0);
 
 const _get = (obj, path) => {
     const [firstKey, ...keys] = path.split('.');
@@ -23,7 +22,7 @@ const getTotalSum = (obj, path) => {
 
 const cart = (state = initialState, action) => {
     switch (action.type) {
-        case "ADD_PIZZA_CART": {
+        case 'ADD_PIZZA_CART': {
             const currentPizzaItems = !state.items[action.payload.id]
                 ? [action.payload]
                 : [...state.items[action.payload.id].items, action.payload];
@@ -46,6 +45,7 @@ const cart = (state = initialState, action) => {
                 totalPrice,
             };
         }
+
         case 'REMOVE_CART_ITEM': {
             const newItems = {
                 ...state.items,
@@ -60,6 +60,7 @@ const cart = (state = initialState, action) => {
                 totalCount: state.totalCount - currentTotalCount,
             };
         }
+
         case 'PLUS_CART_ITEM': {
             const newObjItems = [
                 ...state.items[action.payload].items,
@@ -107,17 +108,12 @@ const cart = (state = initialState, action) => {
             };
         }
 
-        case "CLEAR_CART": {
-            return {
-                ...state,
-                items: {},
-                totalPrice: 0,
-                totalCount: 0,
-            }
-        }
+        case 'CLEAR_CART':
+            return { totalPrice: 0, totalCount: 0, items: {} };
+
         default:
             return state;
     }
-}
+};
 
 export default cart;

@@ -35,6 +35,11 @@ function Cart() {
         dispatch(plusCartItem(id))
     }
 
+    const onClickPay = () => {
+        alert("ваш заказ готов")
+        console.log(items)
+    }
+
     return (
         <div className="content">
             <div className="container container--cart">
@@ -85,7 +90,7 @@ function Cart() {
                                             size={obj.size}
                                             imageUrl={obj.imageUrl}
                                             totalCountByOnePizza={items[obj.id].items.length}
-                                            totalPriceByOnePizza={items[obj.id].totalPriceByOnePizza}
+                                            totalPriceByOnePizza={items[obj.id].totalPrice}
                                             onRemoveItem={onRemoveItem}
                                             onPlusItemCart={onPlusItemCart}
                                             onMinusItemCart={onMinusItemCart}/>)
@@ -105,7 +110,7 @@ function Cart() {
                                         </svg>
                                         <span>Вернуться назад</span>
                                     </Link>
-                                    <div className="button pay-btn">
+                                    <div onClick={onClickPay} className="button pay-btn">
                                         <span>Оплатить сейчас</span>
                                     </div>
                                 </div>
